@@ -5,6 +5,7 @@ const description = document.querySelector('#desc')
 const textField = document.querySelector('#textBox')
 const submit = document.querySelector('#sub')
 const form = document.querySelector('#form')
+const level = document.querySelector('#level')
 
 const changeHeading = function() {
     title.textContent = 'Hey look my button works!'
@@ -12,7 +13,7 @@ const changeHeading = function() {
 }
 
 form.onsubmit = function(event) {
-    document.querySelector('#spells').innerHTML += `<li>${textField.value}</li>` 
+    document.querySelector('#spells').innerHTML += `<li>${textField.value} - ${level.value}</li>` 
     textField.value = ''
     return false
 }

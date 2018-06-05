@@ -47,6 +47,9 @@ form {
   margin-bottom: 1rem;
   margin-left: 10vw;
   width: 50vw;
+  font-family: UnifrakturCook, serif;
+  font-size: 2vw;
+  color: rgba(0,0,0,0.4);
 }
 
 form > div {

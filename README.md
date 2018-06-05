@@ -14,11 +14,11 @@ Display each value in the list item (the name, whatever other field you add) in 
 
 For example:
 
-```html
+`html
 <li>
   <span class="spellName">Fireball</span>
   <span class="level">lvl 4</span>
-</li>```
+</li>`
 
 ### Super Mega Bonus Credit Hyper Fighting
 
