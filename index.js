@@ -12,7 +12,7 @@ const changeHeading = function() {
 }
 
 form.onsubmit = function(event) {
-    document.querySelector('#spells').innerHTML += `<p>${textField.value}</p>` 
+    document.querySelector('#spells').innerHTML += `<li>${textField.value}</li>` 
     textField.value = ''
     return false
 }
