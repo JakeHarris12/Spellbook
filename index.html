@@ -9,19 +9,24 @@
         <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
     </head>
     <body>
+        <img src="skull.png" id="skull" alt="">
+        <img src="quill.png" id="quill" alt="">
+
         <h1 id="title">Spellbook</h1>
+
         <h2 id="desc">Here we will put the spells that we learn</h2>
-        <form id="form">
-            Enter a spell!<br>
-            <input id="textBox" placeholder="Enter a spell here" type="text" name="bonus" autofocus>
-            <br><br>
-            <input id="sub" type="submit" value="Submit">
-        </form>
+        <div>
+            <form id="form">
+                <input id="textBox" placeholder="Enter a spell here" type="text" name="bonus" autofocus>
+                <br><br>
+                <input id="sub" type="submit" value="Submit">
+            </form>
+        </div>
+        <main>
+            <ul id="spells">
+            </ul>
+        </main>
 
-        <ul id="spells">
-        </ul>
-
-        <button id="change">Change Text</button>
         <script src="index.js"></script>
     </body>
 </html>
