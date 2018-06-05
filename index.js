@@ -13,7 +13,10 @@ const changeHeading = function() {
 }
 
 form.onsubmit = function(event) {
-    document.querySelector('#spells').innerHTML += `<li>${textField.value} - ${level.value}</li>` 
+    const node = document.createElement('LI')
+    const spellItem = document.createTextNode(`${textField.value} - ${level.value}`)
+    node.appendChild(spellItem)
+    document.querySelector('#spells').appendChild(node) 
     textField.value = ''
     return false
 }
