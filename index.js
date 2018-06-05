@@ -12,7 +12,8 @@ const changeHeading = function() {
 }
 
 form.onsubmit = function(event) {
-    title.textContent = form.elements[0].value
+    document.querySelector('#spells').textContent += form.elements[0].value + '\n'
+    textField.value = ''
     return false
 }
 
