@@ -150,17 +150,30 @@ span.spell{
   font-family: "Homemade Apple", cursive;
   font-size: 2rem;
   color: rgba(100, 50, 0, 0.8);
-  padding: 1.5rem 0rem;
+  padding: 0rem 0rem;
 }
 
 span.level{
   font-family: 'Shadows Into Light', cursive;
   font-size: 2rem;
   color: rgba(100, 50, 0);
-  padding: 1.5rem 0rem;
+  padding: 0rem 0rem;
 }
 
 .spell{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.spellName{
+  display: flex;
+  text-decoration: underline;
+  max-width: 70%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-left: 0.5em;
 }

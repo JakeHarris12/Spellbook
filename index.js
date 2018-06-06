@@ -13,9 +13,11 @@ const createSpan = function(type) {
     spellNode.setAttributeNode(attr)
     if(type === 'spell'){
         const spellName = document.createTextNode(`${textField.value}`)
+        spellNode.classList.add('spellName')
         spellNode.appendChild(spellName)
     }else if(type === 'level'){
         const spellLevel = document.createTextNode(` - ${level.value}`)
+        spellNode.classList.add('level')
         spellNode.appendChild(spellLevel)
     }else{
         //it shouldn't ever get here but just in case it'll create the spell node, we can always add a new function to this later
