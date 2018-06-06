@@ -9,21 +9,17 @@ const level = document.querySelector('#level')
 const createSpan = function(type) {
     const spellNode = document.createElement('SPAN')
     const attr = document.createAttribute('class')
+    attr.value = type
+    spellNode.setAttributeNode(attr)
     if(type === 'spell'){
         const spellName = document.createTextNode(`${textField.value}`)
-        attr.value = 'spell'
-        spellNode.setAttributeNode(attr)
         spellNode.appendChild(spellName)
     }else if(type === 'level'){
         const spellLevel = document.createTextNode(` - ${level.value}`)
-        attr.value = 'level'
-        spellNode.setAttributeNode(attr)
         spellNode.appendChild(spellLevel)
     }else{
-        //it shouldn't ever get here but just in case it'll create the spell node
+        //it shouldn't ever get here but just in case it'll create the spell node, we can always add a new function to this later
         const spellName = document.createTextNode(`${textField.value}`)
-        attr.value = 'spell'
-        spellNode.setAttributeNode(attr)
         spellNode.appendChild(spellName)
     }
     return spellNode
