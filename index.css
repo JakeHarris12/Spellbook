@@ -159,3 +159,8 @@ span.level{
   color: rgba(100, 50, 0);
   padding: 1.5rem 0rem;
 }
+
+.spell{
+  display: flex;
+  justify-content: space-around;
+}

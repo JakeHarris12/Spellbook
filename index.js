@@ -27,6 +27,7 @@ const createSpan = function(type) {
 
 const createLi = function() {
     const node = document.createElement('LI')
+    node.classList.add('spell')
     const spellNameNode = createSpan('spell')
     const spellLevelNode = createSpan('level')
     node.appendChild(spellNameNode)
