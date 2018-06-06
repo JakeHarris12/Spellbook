@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Spellbook</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
-    </head>
-    <body>
-        <img src="skull.png" id="skull" alt="">
-        <img src="quill.png" id="quill" alt="">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Spellbook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+</head>
+<body>
+  <img src="skull.png" id="skull" alt="">
+  <img src="quill.png" id="quill" alt="">
 
-        <h1 id="title">Spellbook</h1>
 
-        <h2 id="desc">Here we will put the spells that we learn</h2>
-        <div>
-            <form id="form">
-                <input id="textBox" placeholder="Enter a spell here" type="text" name="bonus" autofocus>
-                Select the level of the spell
-                <select id="level">
-                    <option value="Level 1">Level 1</option>
-                    <option value="Level 2">Level 2</option>
-                    <option value="Level 3">Level 3</option>
-                    <option value="Level 4">Level 4</option>
-                    <option value="Level 5">Level 5</option>
-                </select>
-                <input id="sub" type="submit" value="Submit">
-            </form>
-        </div>
-        <main>
-            <ul id="spells">
-            </ul>
-        </main>
+  <h1>Spellbook</h1>
 
-        <script src="index.js"></script>
-    </body>
+  <form>
+    <div>
+      <input
+        type="text"
+        name="spellName"
+        placeholder="Enter a spell name"
+        autofocus
+      >
+      <input
+        type="number"
+        name="level"
+        placeholder="Level"
+        class="small"
+        min="1"
+        max="20"
+      >
+      <button type="submit">Add</button>
+    </div>
+  </form>
+
+  <main>
+    <ul id="spells"></ul>
+  </main>
+
+  <script src="index.js"></script>
+</body>
 </html>

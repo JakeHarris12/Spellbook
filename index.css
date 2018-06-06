@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans%7CHomemade+Apple%7CUnifrakturCook:700');
-@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Homemade+Apple|UnifrakturCook:700');
 
 body {
   background: url(wood.jpg);
@@ -35,22 +34,10 @@ h1 {
   font-size: 8vw;
 }
 
-h2{
-    font-family: UnifrakturCook, serif;
-    margin-left: 10vw;
-    margin-top: 5vw;
-    margin-bottom: 3vw;
-    color: rgba(0, 0, 0, 0.4);
-    font-size: 3vw;
-}
-
 form {
   margin-bottom: 1rem;
   margin-left: 10vw;
   width: 50vw;
-  font-family: UnifrakturCook, serif;
-  font-size: 2vw;
-  color: rgba(0,0,0,0.4);
 }
 
 form > div {
@@ -59,8 +46,9 @@ form > div {
   align-items: stretch;
 }
 
-input[type="text"] {
-  flex: 1 1 0px;
+input[type="text"],
+input[type="number"] {
+  flex: 4 1 0;
   height: auto;
   min-width: 0;
   display: block;
@@ -79,7 +67,8 @@ input[type="text"] {
   appearance: none;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="number"]:focus {
   outline: 0;
   border: 1px solid #8a8a8a;
   background-color: #fefefe;
@@ -94,7 +83,7 @@ input[type="text"]:focus {
   flex: 0 0 auto;
 }
 
-input[type="submit"] {
+button[type="submit"] {
   background-color: #F8BE3D;
   color: #0a0a0a;
   height: auto;
@@ -146,34 +135,22 @@ ul#spells {
   margin-top: -1rem;
 }
 
-span.spell{
-  font-family: "Homemade Apple", cursive;
-  font-size: 2rem;
-  color: rgba(100, 50, 0, 0.8);
-  padding: 0rem 0rem;
+input.small {
+  flex-grow: 1;
 }
 
-span.level{
-  font-family: 'Shadows Into Light', cursive;
-  font-size: 2rem;
-  color: rgba(100, 50, 0);
-  padding: 0rem 0rem;
-}
-
-.spell{
+.spell {
   display: flex;
   justify-content: space-between;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-.spellName{
-  display: flex;
+.spell .name {
   text-decoration: underline;
-  max-width: 70%;
-  overflow: hidden;
-  white-space: nowrap;
+  max-width: 80%;
+  overflow-x: hidden;
   text-overflow: ellipsis;
-  padding-left: 0.5em;
+  padding-left: 0.1em;
+}
+.level {
+  color: cornflowerblue;
 }
