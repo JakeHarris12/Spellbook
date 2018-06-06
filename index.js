@@ -1,6 +1,8 @@
 const app = {
     spells: [],
 
+    index: 0,
+
     init: function() {
       const form = document.querySelector('form')
       form.addEventListener('submit', ev => {
@@ -15,7 +17,7 @@ const app = {
       return el
     },
   
-    renderItem: function(spell) {
+    renderItem: function(spell, index) {
       // ['name', 'level']
       properties = Object.keys(spell)
   
@@ -32,7 +34,22 @@ const app = {
       childElements.forEach(el => {
         item.appendChild(el)
       })
+
+      item.lastChild.remove()
+
+      //creates remove button for each spell
+      const removeButton = document.createElement('button')
+      const text = document.createTextNode('X')
+      removeButton.appendChild(text)
+
+      //creates event listener for the remove button
+      removeButton.addEventListener('click', event => {
+          this.removeSpell(event, index)
+      })
   
+      //adds the button to the <li>
+      item.appendChild(removeButton)
+
       return item
     },
   
@@ -44,17 +61,37 @@ const app = {
       const spell = {
         name: f.spellName.value,
         level: f.level.value,
+        index: this.index,
       }
 
       this.spells.push(spell)
-      console.log(spells)
 
-      const item = this.renderItem(spell)
+      console.log(this.spells)
+
+      const item = this.renderItem(spell, spell.index)
   
       const list = document.querySelector('#spells')
       list.appendChild(item)
   
+      this.index++
+      
       f.reset()
+    },
+
+    removeSpell: function(event, index) {
+        const list = document.querySelector('#spells')
+        list.children[index].remove()
+        for(let i = index; i < this.index; i++){
+            this.spells[i].index--
+        }
+        this.spells.splice(index, 1)
+        this.index--
+        list.innerHTML = ''
+        for(let i = 0; i < this.index; i++){
+            const item = this.renderItem(this.spells[i], this.spells[i].index)
+            list.appendChild(item)
+        }
+        console.log(this.spells)
     },
   }
   
