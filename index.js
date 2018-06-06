@@ -7,31 +7,26 @@ const form = document.querySelector('#form')
 const level = document.querySelector('#level')
 
 const createSpan = function(type) {
+    const spellNode = document.createElement('SPAN')
+    const attr = document.createAttribute('class')
     if(type === 'spell'){
-        const spellNameNode = document.createElement('SPAN')
-        const spellAttr = document.createAttribute('class')
         const spellName = document.createTextNode(`${textField.value}`)
-        spellAttr.value = 'spell'
-        spellNameNode.setAttributeNode(spellAttr)
-        spellNameNode.appendChild(spellName)
-        return spellNameNode
+        attr.value = 'spell'
+        spellNode.setAttributeNode(attr)
+        spellNode.appendChild(spellName)
     }else if(type === 'level'){
-        const spellLevelNode = document.createElement('SPAN')
-        const levelAttr = document.createAttribute('class')
         const spellLevel = document.createTextNode(` - ${level.value}`)
-        levelAttr.value = 'level'
-        spellLevelNode.setAttributeNode(levelAttr)
-        spellLevelNode.appendChild(spellLevel)
-        return spellLevelNode
+        attr.value = 'level'
+        spellNode.setAttributeNode(attr)
+        spellNode.appendChild(spellLevel)
     }else{
-        const spellNameNode = document.createElement('SPAN')
-        const spellAttr = document.createAttribute('class')
+        //it shouldn't ever get here but just in case it'll create the spell node
         const spellName = document.createTextNode(`${textField.value}`)
-        spellAttr.value = 'spell'
-        spellNameNode.setAttributeNode(spellAttr)
-        spellNameNode.appendChild(spellName)
-        return spellNameNode
+        attr.value = 'spell'
+        spellNode.setAttributeNode(attr)
+        spellNode.appendChild(spellName)
     }
+    return spellNode
 }
 
 const createLi = function() {
