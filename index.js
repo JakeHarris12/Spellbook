@@ -1,101 +1,80 @@
 const app = {
-    spells: [],
+  init: function() {
+    this.spells = []
+    this.template = document.querySelector('.spell.template')
 
-    index: 0,
+    const form = document.querySelector('form')
+    form.addEventListener('submit', ev => {
+      this.handleSubmit(ev)
+    })
+  },
 
-    init: function() {
-      const form = document.querySelector('form')
-      form.addEventListener('submit', ev => {
-        this.handleSubmit(ev)
-      })
-    },
-  
-    renderProperty: function(name, value) {
-      const el = document.createElement('span')
-      el.textContent = value
-      el.classList.add(name)
-      el.setAttribute('title', value)
-      return el
-    },
-  
-    renderItem: function(spell, index) {
-      // ['name', 'level']
-      properties = Object.keys(spell)
-  
-      // collect an array of renderProperty's return values
-      // (an array of <span> elements)
-      const childElements = properties.map(property => {
-        return this.renderProperty(property, spell[property])
-      })
-  
-      const item = document.createElement('li')
-      item.classList.add('spell')
-  
-      // append each <span> to the <li>
-      childElements.forEach(el => {
-        item.appendChild(el)
-      })
+  renderProperty: function(name, value) {
+    const el = document.createElement('span')
+    el.textContent = value
+    el.classList.add(name)
+    el.setAttribute('title', value)
+    return el
+  },
 
-      item.lastChild.remove()
+  renderItem: function(spell) {
+    const item = this.template.cloneNode(true)
+    item.classList.remove('template')
 
-      //creates remove button for each spell
-      const removeButton = document.createElement('button')
-      const text = document.createTextNode('X')
-      removeButton.classList.add('delete')
-      removeButton.setAttribute('title', 'delete spell')
-      removeButton.appendChild(text)
+    // ['name', 'level', etc.]
+    properties = Object.keys(spell)
 
-      //creates event listener for the remove button
-      removeButton.addEventListener('click', event => {
-          this.removeSpell(event, index)
-      })
-  
-      //adds the button to the <li>
-      item.appendChild(removeButton)
+    // Replace the appropriate values in each <span>
+    properties.forEach(property => {
+      const el = item.querySelector(`.${property}`)
+      el.textContent = spell[property]
+      el.setAttribute('title', spell[property])
+    })
 
-      return item
-    },
-  
-    handleSubmit: function(ev) {
-      ev.preventDefault()
-  
-      const f = ev.target
-  
-      const spell = {
-        name: f.spellName.value,
-        level: f.level.value,
-        index: this.index,
-      }
+    // delete button
+    item
+      .querySelector('button.delete')
+      .addEventListener(
+        'click',
+        this.removeSpell.bind(this, spell)
+      )
 
-      this.spells.push(spell)
+    // fav button
 
-      console.log(this.spells)
 
-      const item = this.renderItem(spell, spell.index)
-  
-      const list = document.querySelector('#spells')
-      list.appendChild(item)
-  
-      this.index++
-      
-      f.reset()
-    },
+    return item
+  },
 
-    removeSpell: function(event, index) {
-        const list = document.querySelector('#spells')
-        list.children[index].remove()
-        for(let i = index; i < this.index; i++){
-            this.spells[i].index--
-        }
-        this.spells.splice(index, 1)
-        this.index--
-        list.innerHTML = ''
-        for(let i = 0; i < this.index; i++){
-            const item = this.renderItem(this.spells[i], this.spells[i].index)
-            list.appendChild(item)
-        }
-        console.log(this.spells)
-    },
-  }
-  
-  app.init()
+  removeSpell: function(spell, ev) {
+    // Remove from the DOM
+    const button = ev.target
+    const item = button.closest('.spell')
+    item.parentNode.removeChild(item)
+
+    // Remove from the array
+    const i = this.spells.indexOf(spell)
+    this.spells.splice(i, 1)
+  },
+
+  handleSubmit: function(ev) {
+    ev.preventDefault()
+
+    const f = ev.target
+
+    const spell = {
+      name: f.spellName.value,
+      level: f.level.value,
+    }
+    this.spells.push(spell)
+
+    const item = this.renderItem(spell)
+
+    const list = document.querySelector('#spells')
+    list.appendChild(item)
+
+    f.reset()
+    f.spellName.focus()
+  },
+}
+
+app.init()
