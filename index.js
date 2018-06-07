@@ -47,6 +47,8 @@ const app = {
         this.favSpell.bind(this, spell)
       )
 
+      item.querySelector('button.fav').textContent = '★'
+
     return item
   },
 
@@ -66,12 +68,22 @@ const app = {
     const button = ev.target
     const item = button.closest('.spell')
     //creates star
-    const star = document.createElement('img')
-    star.setAttribute('src', 'star.png')
-    star.setAttribute('id', 'star')
-    star.setAttribute('alt', '')
-    //adds star to the end
-    item.appendChild(star)
+    if(spell.fav === false){
+      const star = document.createElement('img')
+      star.setAttribute('src', 'star.png')
+      star.setAttribute('id', 'star')
+      star.setAttribute('alt', '')
+      //adds star to the end
+      item.appendChild(star)
+      button.setAttribute('title', 'unfavorite')
+      button.textContent = '☆'
+      spell.fav = true
+    }else{
+      item.removeChild(star)
+      button.setAttribute('title', 'favorite')
+      button.textContent = '★'
+      spell.fav = false
+    }
   },
 
   handleSubmit: function(ev) {
@@ -82,6 +94,7 @@ const app = {
     const spell = {
       name: f.spellName.value,
       level: f.level.value,
+      fav: false,
     }
     this.spells.push(spell)
 
