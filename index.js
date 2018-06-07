@@ -40,7 +40,12 @@ const app = {
       )
 
     // fav button
-
+    item
+      .querySelector('button.fav')
+      .addEventListener(
+        'click',
+        this.favSpell.bind(this, spell)
+      )
 
     return item
   },
@@ -54,6 +59,19 @@ const app = {
     // Remove from the array
     const i = this.spells.indexOf(spell)
     this.spells.splice(i, 1)
+  },
+
+  favSpell: function(spell, ev) {
+    //selects list item
+    const button = ev.target
+    const item = button.closest('.spell')
+    //creates star
+    const star = document.createElement('img')
+    star.setAttribute('src', 'star.png')
+    star.setAttribute('id', 'star')
+    star.setAttribute('alt', '')
+    //adds star to the end
+    item.appendChild(star)
   },
 
   handleSubmit: function(ev) {
