@@ -14,6 +14,7 @@ const app = {
       const el = document.createElement('span')
       el.textContent = value
       el.classList.add(name)
+      el.setAttribute('title', value)
       return el
     },
   
@@ -40,6 +41,8 @@ const app = {
       //creates remove button for each spell
       const removeButton = document.createElement('button')
       const text = document.createTextNode('X')
+      removeButton.classList.add('delete')
+      removeButton.setAttribute('title', 'delete spell')
       removeButton.appendChild(text)
 
       //creates event listener for the remove button
