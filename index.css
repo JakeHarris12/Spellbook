@@ -158,19 +158,40 @@ input.small {
 }
 
 button.delete {
-  background-color: #ff3333;
-  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid transparent;
+  height: auto;
+  font-family: UnifrakturCook, serif;
+  font-size: 2rem;
+  text-align: center;
+  cursor: pointer;
 }
 
 button.fav {
-  background-color: #F8BE3D;
-  color: black;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(88, 60, 0);
+  border: 1px solid transparent;
+  height: auto;
+  font-family: UnifrakturCook, serif;
+  font-size: 2rem;
+  text-align: center;
+  cursor: pointer;
 }
 
 button.move {
-  background-color: #3366ff;
-  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid transparent;
+  height: auto;
+  font-family: UnifrakturCook, serif;
+  font-size: 2rem;
+  text-align: center;
+  cursor: pointer;
 }
+
+#star {
+  width: 30px;
+  height: 30px;
+  }  
 
 .spell.fav {
   background-color: goldenrod;

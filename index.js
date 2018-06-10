@@ -86,6 +86,8 @@ class App {
         this.moveDown.bind(this, spell)
       )
 
+    item.querySelector('button.fav').textContent = '★'
+
     return item
   }
 
@@ -149,7 +151,25 @@ class App {
   toggleFavorite(spell, ev) {
     const button = ev.target
     const item = button.closest('.spell')
-    spell.favorite = item.classList.toggle('fav')
+    //creates star
+    if(spell.fav === false){
+      const star = document.createElement('img')
+      star.setAttribute('src', 'star.png')
+      star.setAttribute('id', 'star')
+      star.setAttribute('alt', '')
+      //adds star to the end
+      item.appendChild(star)
+      console.log(item)
+      button.setAttribute('title', 'unfavorite')
+      button.textContent = '☆'
+      spell.fav = true
+    }else{
+      console.log(item)
+      item.removeChild(star)
+      button.setAttribute('title', 'favorite')
+      button.textContent = '★'
+      spell.fav = false
+    }  
     this.save()
   }
 
@@ -168,7 +188,7 @@ class App {
     const spell = {
       name: f.spellName.value,
       level: f.level.value,
-      favorite: false,
+      fav: false,
     }
 
     this.addSpell(spell)
