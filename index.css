@@ -142,7 +142,6 @@ input.small {
 .spell {
   display: flex;
   justify-content: space-between;
-  align-content: center;
 }
 
 .spell .name {
@@ -159,31 +158,24 @@ input.small {
 }
 
 button.delete {
-  background-color: rgba(0, 0, 0, 0);
-  border: 1px solid transparent;
-  height: auto;
-  font-family: UnifrakturCook, serif;
-  font-size: 2rem;
-  text-align: center;
-  cursor: pointer;
+  background-color: #ff3333;
+  color: white;
 }
 
 button.fav {
-  background-color: rgba(0, 0, 0, 0);
-  color: rgb(88, 60, 0);
-  border: 1px solid transparent;
-  height: auto;
-  font-family: UnifrakturCook, serif;
-  font-size: 2rem;
-  text-align: center;
-  cursor: pointer;
+  background-color: #F8BE3D;
+  color: black;
+}
+
+button.move {
+  background-color: #3366ff;
+  color: white;
+}
+
+.spell.fav {
+  background-color: goldenrod;
 }
 
 .template {
   display: none;
-}
-
-#star {
-  width: 30px;
-  height: 30px;
 }
