@@ -50,8 +50,19 @@ class App {
     })
 
     // Mark it as a favorite, if applicable
-    if (spell.favorite) {
-      item.classList.add('fav')
+    if (spell.fav) {
+      const star = document.createElement('img')
+      
+      star.setAttribute('src', 'star.png')
+      star.setAttribute('id', 'star')
+      star.setAttribute('alt', '')
+      console.log(item.childNodes)
+      item.appendChild(star)
+      item.childNodes[11].setAttribute('title', 'unfavorite')
+      item.childNodes[11].textContent = '☆'
+      spell.fav = true
+    }else{
+      item.querySelector('button.fav').textContent = '★'
     }
 
     // delete button
@@ -85,8 +96,6 @@ class App {
         'click',
         this.moveDown.bind(this, spell)
       )
-
-    item.querySelector('button.fav').textContent = '★'
 
     return item
   }
@@ -159,7 +168,6 @@ class App {
       star.setAttribute('alt', '')
       //adds star to the end
       item.appendChild(star)
-      console.log(item)
       button.setAttribute('title', 'unfavorite')
       button.textContent = '☆'
       spell.fav = true
